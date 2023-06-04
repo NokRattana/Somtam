@@ -38,6 +38,10 @@ dependencies:
   flutter_circular_text: ^0.3.1
   google_fonts: ^4.0.4
   bottom_navy_bar: ^6.0.0
+  flutter_lorem: ^2.0.0
+  dotted_border: ^2.0.0+3
+  fluttermoji: ^1.0.2
+  empty_widget: ^0.0.5
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +70,7 @@ flutter:
     - images/stm_login.png
     - images/somtam00.jpg
     - images/somtam sheak.png
+    - images/xin ton.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,1 +1,2 @@
-const imageUrl = "images/somtam sheak.png";
+const imageUrl = "images/xin ton.png";
+const imagelogo = "images/xin ton.png";

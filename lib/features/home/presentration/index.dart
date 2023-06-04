@@ -1,6 +1,9 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:somtam/features/createSTM/presentraion/indext.dart';
+import 'package:somtam/features/landing/presentration/indext.dart';
 import 'package:somtam/features/productCard/presentration/indext.dart';
+import 'package:somtam/features/profile/presentration/index.dart';
 import 'package:somtam/features/utils/constants.dart';
 import 'package:somtam/features/utils/fonts.dart';
 
@@ -12,6 +15,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     var scaffold = Scaffold(
@@ -20,12 +25,14 @@ class _HomeState extends State<Home> {
           title,
           style: TextStyle(fontFamily: titleFont),
         ),
-        backgroundColor: Color.fromARGB(255, 248, 203, 4),
+        backgroundColor: Color.fromARGB(255, 167, 226, 5),
         automaticallyImplyLeading: false,
         centerTitle: false,
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-          ActionChip(
+          Padding(
+            padding: EdgeInsets.only(right: 5.0), 
+          child: ActionChip(
               backgroundColor: Color.fromARGB(255, 80, 126, 5),
               label: Row(
                 children: [
@@ -40,10 +47,15 @@ class _HomeState extends State<Home> {
                               color: Colors.black, fontWeight: FontWeight.bold),
                           children: <TextSpan>[TextSpan(text: "Store")]))
                 ],
-              ))
+              )),
+              )
+          
+              //
+              
         ],
       ),
-      body: GridView.builder(
+      body: (currentIndex == 0)
+      ? GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             childAspectRatio: (1 / 1.4),
             crossAxisCount: 2,
@@ -51,41 +63,40 @@ class _HomeState extends State<Home> {
           itemCount: 5,
           itemBuilder: (BuildContext context, int index) {
             return const ProductCard();
-          }),
+          })
+         // : const CreateSTM(),//
 
-
-
-        bottomNavigationBar: BottomNavyBar(
-          showElevation: true,
-          itemCornerRadius: 24,
-          curve: Curves.easeIn,
-          items: <BottomNavyBarItem>[
-            BottomNavyBarItem(
-              icon: Icon(bottomMenu[0] ['icon']),
-              title: Text(bottomMenu[0] ['label']),
-              textAlign: TextAlign.center,
-               ),
-
-           BottomNavyBarItem(
-              icon: Icon(bottomMenu[1] ['icon']),
-              title: Text(bottomMenu[1] ['label']),
-              textAlign: TextAlign.center,
-               ),
           
-           BottomNavyBarItem(
-              icon: Icon(bottomMenu[2] ['icon']),
-              title: Text(bottomMenu[2] ['label']),
-              textAlign: TextAlign.center,
-               ),
-            
-            
+      : (currentIndex == 1) ? const CreateSTM() : const Proflie(),
 
-          ],
-          onItemSelected: (index)async{},
+      bottomNavigationBar: BottomNavyBar(
+        selectedIndex: currentIndex,
+        showElevation: true,
+        itemCornerRadius: 24,
+        curve: Curves.easeIn,
+        items: <BottomNavyBarItem>[
+          BottomNavyBarItem(
+            icon: Icon(bottomMenu[0]['icon']),
+            title: Text(bottomMenu[0]['label']),
+            textAlign: TextAlign.center,
           ),
-          
-
-         
+          BottomNavyBarItem(
+            icon: Icon(bottomMenu[1]['icon']),
+            title: Text(bottomMenu[1]['label']),
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(bottomMenu[2]['icon']),
+            title: Text(bottomMenu[2]['label']),
+            textAlign: TextAlign.center,
+          ),
+        ],
+        onItemSelected: (index) async {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+      ),
     );
     return scaffold;
   }

@@ -89,8 +89,8 @@ class Landing extends StatelessWidget {
               landingAction,
               style: TextStyle(
                 fontFamily: buttonFont,
-                fontSize: 18,
-                color: Color.fromARGB(255, 238, 97, 3),
+                fontSize: 24,
+                //color: Color.fromARGB(255, 238, 97, 3),//
               ),
             )),
       ),

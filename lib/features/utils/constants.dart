@@ -8,6 +8,9 @@ const landingAction = "Se Meny";
 const title = "Som Tam Matkasse";
 List<Map<String, dynamic>> bottomMenu = [
   {'icon': Icons.home, 'label': 'Home'},
-  {'icon': Icons.add, 'label': 'Product'},
-  {'icon': Icons.person, 'label': 'My Profile'},
+  {'icon': Icons.add, 'label': 'Recept'},
+  {'icon': Icons.person, 'label': 'Min Sida'},
 ];
+
+const somTitle = "Somtam Salad";
+const uploadRecept = "Ladda upp recept bilden";
